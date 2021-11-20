@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>online.smiechowicz</groupId>
+    <artifactId>userservice</artifactId>
+    <packaging>pom</packaging>
+    <version>1</version>
+
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+
+    <modules>
+        <module>userservice-backend</module>
+        <module>userservice-domain</module>
+        <module>userservice-model</module>
+        <module>userservice-client</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
+        <maven.surefire.plugin>2.22.2</maven.surefire.plugin>
+
+        <camel.version>3.12.0</camel.version>
+        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+        <dockerfile-plugin.version>1.4.13</dockerfile-plugin.version>
+    </properties>
+
+    <name>userservice</name>
+
+    <description>
+        CRUD user service
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
