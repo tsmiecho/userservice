@@ -1,0 +1,16 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:hsqldb:mem:unit-testing-jpa;sql.syntax_pgs=true
+  jpa:
+    database-platform: org.hibernate.dialect.HSQLDialect
+    hibernate:
+      ddl-auto: create

@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: online.smiechowicz.service.ApplicationTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.903 s - in online.smiechowicz.service.ApplicationTest

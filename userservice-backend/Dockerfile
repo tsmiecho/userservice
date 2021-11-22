@@ -1,19 +1,19 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
 
-RUN addgroup did
+RUN addgroup tsmiecho
 
-RUN adduser did -h /opt/did/ -G did -D
+RUN adduser tsmiecho -h /opt/tsmiecho/ -G tsmiecho -D
 
 RUN apk --no-cache add curl
 
-USER did:did
+USER tsmiecho:tsmiecho
 
-RUN mkdir /opt/did/config
+RUN mkdir /opt/tsmiecho/config
 
 ENV JAVA_OPTS="-XshowSettings:vm"
 
 ARG JAR_FILE
-COPY target/$JAR_FILE /opt/did/userservice.jar
+COPY target/$JAR_FILE /opt/tsmiecho/userservice.jar
 
-WORKDIR /opt/did/
+WORKDIR /opt/tsmiecho/
 ENTRYPOINT exec java $JAVA_OPTS -jar userservice.jar

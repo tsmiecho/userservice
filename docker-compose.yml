@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+
+  userservice:
+    container_name: userservice
+    hostname: userservice
+    image: online.smiechowicz/userservice:1
+    networks:
+      - general
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "localhost:8080/actuator/health" ]
+    ports:
+      - "8080:8080"
+
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:latest
+    volumes:
+      - "./script/init.sql:/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      POSTGRES_USER: generic_user
+      POSTGRES_PASSWORD: generic_pass
+      POSTGRES_DB: generic_db
+    networks:
+      - general
+    ports:
+      - "5432:5432"
+
+networks:
+  general:
+

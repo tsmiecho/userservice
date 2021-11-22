@@ -17,7 +17,6 @@
         <module>userservice-backend</module>
         <module>userservice-domain</module>
         <module>userservice-model</module>
-        <module>userservice-client</module>
     </modules>
 
     <properties>
@@ -28,7 +27,11 @@
 
         <camel.version>3.12.0</camel.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
-        <dockerfile-plugin.version>1.4.13</dockerfile-plugin.version>
+
+        <docker.image.registry/>
+        <docker.image.group>${project.groupId}</docker.image.group>
+        <docker.image.name>${project.groupId}/${project.parent.artifactId}:${project.version}</docker.image.name>
+        <docker.maven.plugin.version>0.34.0</docker.maven.plugin.version>
     </properties>
 
     <name>userservice</name>
@@ -43,12 +46,14 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
